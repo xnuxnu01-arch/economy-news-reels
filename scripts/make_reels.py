@@ -9,7 +9,6 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
-from gtts import gTTS
 
 ROOT = Path(__file__).resolve().parents[1]
 INPUT = ROOT / "input" / "reels.json"
