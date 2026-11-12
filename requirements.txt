@@ -1,2 +1,2 @@
-aiohttp.client_exceptions.WSServerHandshakeError:
-403, message='Invalid response status'
+Pillow==11.1.0
+gTTS==2.5.4
