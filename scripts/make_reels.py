@@ -3,6 +3,8 @@ import json
 import math
 import subprocess
 import textwrap
+import asyncio
+import edge_tts
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
