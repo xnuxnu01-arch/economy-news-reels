@@ -1,3 +1,4 @@
+
 name: Build Economy Reel
 
 on:
@@ -15,9 +16,12 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -44,5 +48,6 @@ jobs:
           git add output/reels.mp4
           if ! git diff --cached --quiet; then
             git commit -m "Build economy reel"
+            git pull --rebase origin main
             git push
           fi
