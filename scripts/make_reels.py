@@ -82,9 +82,9 @@ def make_frame(character, label, headline, subtitle, index, total):
     d.text((64, 1820), f"매일 30초 경제 브리핑  •  {index}/{total}", font=font(32, True), fill=(210, 230, 255))
     return im
 
-async def make_audio(text, path, voice):
-    communicate = edge_tts.Communicate(text=text, voice=voice, rate="+0%", volume="+0%")
-    await communicate.save(str(path))
+def make_audio(text, path, voice=None):
+    tts = gTTS(text=text, lang="ko")
+    tts.save(str(path))
 
 def probe_duration(path):
     result = subprocess.check_output([
@@ -130,7 +130,7 @@ def main():
         frame = WORK / f"frame_{i:02d}.png"
         segment = WORK / f"segment_{i:02d}.mp4"
 
-        asyncio.run(make_audio(spoken, audio, voice))
+        make_audio(spoken, audio, voice)
         make_frame(character, label, headline, spoken, i, len(scenes)).save(frame)
         duration = probe_duration(audio) + 0.35
 
