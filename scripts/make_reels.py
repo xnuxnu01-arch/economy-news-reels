@@ -196,10 +196,18 @@ def make_frame(label, headline, subtitle, index, total):
     return im
 
 
-def make_audio(text, path, voice=None):
-    tts = gTTS(text=text, lang="ko")
-    tts.save(str(path))
+async def make_audio_async(text, path, voice):
+    communicate = edge_tts.Communicate(
+        text=text,
+        voice="ko-KR-SunHiNeural",
+        rate="+0%",
+        volume="+0%"
+    )
+    await communicate.save(str(path))
 
+
+def make_audio(text, path, voice=None):
+    asyncio.run(make_audio_async(text, path, voice))
 
 def make_motion_frames(portrait, index, duration):
     """
