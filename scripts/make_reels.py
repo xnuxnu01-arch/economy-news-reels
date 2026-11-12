@@ -1,12 +1,12 @@
 import json
 import os
 import subprocess
-import asyncio
+
 import textwrap
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
-import edge_tts
+from gtts import gTTS
 
 ROOT = Path(__file__).resolve().parents[1]
 INPUT = ROOT / "input" / "reels.json"
